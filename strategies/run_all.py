@@ -73,11 +73,23 @@ def main():
     print()
 
     # Import strategy modules (must be run with cwd = repo root)
-    from strategies import ma_crossover, ma_crossover_slow, mean_reversion
+    from strategies import (
+        ma_crossover,
+        ma_crossover_slow,
+        mean_reversion,
+        zscore_reversion,
+        chat_vol,
+        gemini_mean_reversion,
+        mig_competition,
+    )
     strategies = [
         ("MA(5/20)", ma_crossover.get_actions),
         ("MA(10/50)", ma_crossover_slow.get_actions),
         ("Mean reversion (20d)", mean_reversion.get_actions),
+        ("Z-score reversion (20d)", zscore_reversion.get_actions),
+        ("ChatGPT Volatility (20d)", chat_vol.get_actions),
+        ("Gemini Mean Reversion (20d)", gemini_mean_reversion.get_actions),
+        ("MIG Competition", mig_competition.get_actions),
     ]
 
     results = []
