@@ -20,7 +20,7 @@ from backtester import Backtester
 
 
 def load_prices(data_path: str) -> np.ndarray:
-    """Load dev_data.csv and return prices matrix (num_stocks, num_days)."""
+    """Load OHLCV CSV (e.g. dev_data_30.csv) and return Open matrix (num_stocks, num_days)."""
     df = pd.read_csv(
         data_path,
         parse_dates=["Date"],
@@ -84,7 +84,12 @@ def main():
         chat_mean_reversion,
         cross_sectional,
         pairs_trading,
-        graph
+        graph,
+        ml_logistic_momentum,
+        beta_basket_residual,
+        pca_idiosyncratic,
+        cs_momentum_rank,
+        regime_vol_breakout,
     )
     strategies = [
         ("MA(5/20)", ma_crossover.get_actions),
@@ -97,7 +102,12 @@ def main():
         ("ChatGPT Mean Reversion", chat_mean_reversion.get_actions),
         ("Cross Sectional Volatity", cross_sectional.get_actions),
         ("Pairs Trading", pairs_trading.get_actions),
-        ("Graph Trading", graph.get_actions)
+        ("Graph Trading", graph.get_actions),
+        ("ML Logistic Momentum", ml_logistic_momentum.get_actions),
+        ("Beta Basket Residual", beta_basket_residual.get_actions),
+        ("PCA Idiosyncratic", pca_idiosyncratic.get_actions),
+        ("CS Momentum Rank", cs_momentum_rank.get_actions),
+        ("Regime Vol / MR", regime_vol_breakout.get_actions),
     ]
 
     results = []
