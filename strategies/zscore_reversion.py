@@ -20,7 +20,7 @@ def get_actions(prices: np.ndarray) -> np.ndarray:
     window = 20
     entry_z = -1.5   # buy when price is 1.5 std below mean
     exit_z = 0.0     # sell when z-score crosses back above 0
-    shares = 100
+    shares = 10
 
     for i in range(num_stocks):
         position = 0
