@@ -63,7 +63,7 @@ def backtest_quiet(strategy_fn, prices: np.ndarray, cash: float = 25_000) -> dic
 
 
 def main():
-    data_path = os.path.join(REPO_ROOT, "dev_data.csv")
+    data_path = os.path.join(REPO_ROOT, "dev_data_30.csv")
     if not os.path.isfile(data_path):
         print(f"Data not found: {data_path}")
         sys.exit(1)
@@ -81,6 +81,10 @@ def main():
         chat_vol,
         gemini_mean_reversion,
         mig_competition,
+        chat_mean_reversion,
+        cross_sectional,
+        pairs_trading,
+        graph
     )
     strategies = [
         ("MA(5/20)", ma_crossover.get_actions),
@@ -90,6 +94,10 @@ def main():
         ("ChatGPT Volatility (20d)", chat_vol.get_actions),
         ("Gemini Mean Reversion (20d)", gemini_mean_reversion.get_actions),
         ("MIG Competition", mig_competition.get_actions),
+        ("ChatGPT Mean Reversion", chat_mean_reversion.get_actions),
+        ("Cross Sectional Volatity", cross_sectional.get_actions),
+        ("Pairs Trading", pairs_trading.get_actions),
+        ("Graph Trading", graph.get_actions)
     ]
 
     results = []
